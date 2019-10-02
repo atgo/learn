@@ -1,3 +1,5 @@
+// https://play.golang.org/p/VNh81g9R7FG
+
 package main
 
 import "fmt"
