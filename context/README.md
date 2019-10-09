@@ -5,6 +5,7 @@ Learn Golang context
 
 - https://dave.cheney.net/2017/08/20/context-isnt-for-cancellation
 - https://blog.labix.org/2011/10/09/death-of-goroutines-under-control
+- https://godoc.org/golang.org/x/sync/errgroup
 
 ## Value
 
