@@ -11,16 +11,37 @@ go get github.com/gorilla/mux@latest
 package main
 
 import (
+	"context"
+	"net"
 	"net/http"
+	"os"
+	"os/signal"
 	"time"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
-	server := http.Server{
+	ctx, can := context.WithCancel(context.Background())
+
+	server := server(ctx, router())
+
+	go func() {
+		err := server.ListenAndServe()
+		can()
+		panic(err)
+	}()
+
+	forever := make(chan os.Signal)
+	signal.Notify(forever)
+	<-forever // terminated
+	can()
+}
+
+func server(ctx context.Context, router *mux.Router) http.Server {
+	return http.Server{
 		Addr:              "localhost:8484",
-		Handler:           router(),
+		Handler:           router,
 		ReadTimeout:       5 * time.Second,
 		ReadHeaderTimeout: 5 * time.Second,
 		WriteTimeout:      5 * time.Second,
@@ -29,11 +50,11 @@ func main() {
 		TLSNextProto:      nil,
 		ConnState:         nil,
 		ErrorLog:          nil, // custom logger
-		BaseContext:       nil,
-		ConnContext:       nil, // factory to create connect context.
+		BaseContext: func(listener net.Listener) context.Context {
+			return ctx
+		},
+		ConnContext: nil, // factory to create connect context.
 	}
-
-	panic(server.ListenAndServe())
 }
 
 func router() *mux.Router {
@@ -43,7 +64,8 @@ func router() *mux.Router {
 		"/",
 		func(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusOK)
-			_, _ = w.Write([]byte(`{"status":"OK""}`))
+			r.Header.Set("Content-Type", "application/json")
+			_, _ = w.Write([]byte(`{"status":"OK"}`))
 		},
 	)
 
