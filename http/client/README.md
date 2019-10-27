@@ -13,3 +13,14 @@ HTTP client
   req.WithContext(ctx)
 }
 ```
+
+## Read response body
+
+```go
+client := http.Client{}
+res, err := client.Do(req)
+defer res.Body.Close()
+
+body, err := ioutil.ReadAll(res.Body)
+fmt.Println(res.StatusCode, body, err)
+```
