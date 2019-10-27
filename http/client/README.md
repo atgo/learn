@@ -24,3 +24,7 @@ defer res.Body.Close()
 body, err := ioutil.ReadAll(res.Body)
 fmt.Println(res.StatusCode, body, err)
 ```
+
+## Lib
+
+- https://github.com/hashicorp/go-cleanhttp
