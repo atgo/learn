@@ -28,3 +28,4 @@ fmt.Println(res.StatusCode, body, err)
 ## Lib
 
 - https://github.com/hashicorp/go-cleanhttp
+- https://github.com/hashicorp/go-retryablehttp
