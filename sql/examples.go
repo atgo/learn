@@ -1,7 +1,9 @@
 package learn_sql
 
 import (
+	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
 // example: NewMySQL("user:pass@tcp(host:3306)/db")
