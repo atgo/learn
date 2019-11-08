@@ -12,6 +12,7 @@ func NewMySQL(dsn string) *sql.DB, error {
 }
 
 // example: NewSQLite("/tmp/db.sqlite")
+// memory:  NewSQLite(":memory:")
 func NewSQLite(dsn string)  *sql.DB, error {
 	return sql.Open("sqlite3", dns)
 }
