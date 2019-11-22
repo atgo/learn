@@ -39,15 +39,18 @@ func main() {
 
     ctx := context.Background()
 
+    wg := sync.WaitGroup{}
     for i := 0; i < 10; i++ {
+        wg.Add(1)
         worker := app.getWorker(ctx, i)
         go func(i int) {
             worker.in <- job(fmt.Sprintf("%v", i))
             <-worker.out
+            wg.Done()
         }(i)
     }
 
-    time.Sleep(2 * time.Second)
+    wg.Wait()
 }
 
 func (re *app) getWorker(ctx context.Context, id int) *worker {
