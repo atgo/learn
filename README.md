@@ -9,3 +9,7 @@
 ## Conferences
 
 - https://www.gophercon.org.il/
+
+## Feedbacks
+
+- https://fasterthanli.me/blog/2020/i-want-off-mr-golangs-wild-ride/
