@@ -24,3 +24,5 @@
 - https://blog.golang.org/go1.12
 - https://blog.golang.org/go1.13
 - https://blog.golang.org/go1.14
+  - webassembly
+  - https://golang.org/pkg/hash/maphash/
