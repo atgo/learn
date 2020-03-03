@@ -15,4 +15,5 @@
 
 ## Go tools
 
+- https://golang.org/cmd/go/
 - https://golang.org/cmd/cgo/
