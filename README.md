@@ -17,3 +17,10 @@
 
 - https://golang.org/cmd/go/
 - https://golang.org/cmd/cgo/
+
+## Releases
+
+- https://blog.golang.org/go1.11
+- https://blog.golang.org/go1.12
+- https://blog.golang.org/go1.13
+- https://blog.golang.org/go1.14
