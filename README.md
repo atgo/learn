@@ -17,6 +17,14 @@
 
 - https://golang.org/cmd/go/
 - https://golang.org/cmd/cgo/
+- go fmt
+- go test
+- go fix
+- go run
+- go run -race
+- go vet
+- go list -h
+  - go list -f '{{ .Name }}'
 
 ## Releases
 
