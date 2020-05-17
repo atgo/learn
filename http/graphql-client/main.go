@@ -24,7 +24,7 @@ func main() {
 		}`,
 	)
 
-	req.Var("email", "andy@go1.com")
+	req.Var("email", "john@qa")
 	res := struct {
 		Data struct {
 			Id    int    `json:"legacyId"`
